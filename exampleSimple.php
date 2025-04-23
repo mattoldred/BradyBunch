@@ -2,7 +2,12 @@
 
 include "BradyBunch.php";
 
-$bb = new MattOldred\BradyBunch\PrintJob( 'TestPrint', 'M6-9-423' ); // Change this to your size of label
+//$bb = new MattOldred\BradyBunch\PrintJob( 'TestPrint', 'M6-9-423' ); // Change this to your size of label
+$bb = new MattOldred\BradyBunch\PrintJob( 'TestPrint', new MattOldred\BradyBunch\LabelType('M6-9-423',650, 200) ); // Change this to your size of label, dimensions are in thousands of an inch
+//$bb->Timeout = 5; 
+//$bb->SaveSmallLabels = true;
+//$bb->PostPrintOperations = MattOldred\BradyBunch\PrintJob::EndOfJob; // cut at end of job
+
 
 $page = $bb->createPage();
 $text = "12345";

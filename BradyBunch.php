@@ -64,7 +64,7 @@ class LabelType
 	public int $pxWidth;
 	public int $pxHeight;
 	
-	public function __construct($SubstratePart, $inWidth=0, $inHeight=0, $pxWidth=0, $pxHeight=0)
+	public function __construct($SubstratePart, $inWidth=0, $inHeight=0, $pxWidth=0, $pxHeight=0) //dimensions are thousands of an inch
     {
 		if($inWidth == 0 && $inHeight==0 && $pxWidth==0 && $pxHeight==0 )
 		{
@@ -121,8 +121,9 @@ class PrintJob
 	public string $JobSource="BWS"; //Unsure if this is allowed to change
 	public string $JobClientId; //f2103b89-a264-4173-957e-7b7b772edbbd seems to just be a UUID, but not the same UUID as JobID
 	public string $PrintSides="Simplex";
-	public int $PostPrintOperations = self::EndOfJob;
-	public bool $SaveSmallLabels=true;
+	public int    $PostPrintOperations = self::EndOfJob; // cutting
+	public bool   $SaveSmallLabels=true; // small labels get lost in the machine, if small print a blank label at end of job
+	public int    $Timeout=1; //seconds
 	
 	public array $Pages = array();
 	
@@ -379,7 +380,7 @@ class PrintJob
 		$data = $this->generatePRN();
 		try
 		{
-			$fp=pfsockopen($ip,9100);
+			$fp=fsockopen($ip, 9100, $errno, $errstr, $this->Timeout);
 			
 			if(!$fp)
 				throw new Exception("Could not contact $ip");
