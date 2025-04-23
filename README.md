@@ -22,7 +22,7 @@ Optionally imagemagick's 'convert' is required for some advanced features.
 ## Usage/Examples
 
 ```php
-include "BradyBunch.php";
+include "BradyBunch/BradyBunch.php";
 
 $bb = new MattOldred\BradyBunch\PrintJob( 'TestPrint', 'M6-9-423' ); // Change this to your size of label
 
@@ -41,8 +41,6 @@ $bb->print("192.168.0.135");                                       // Change to 
 - Pure PHP lz4 encoding
 
 - More label sizes
-
-- Allow hostnames not just IP
 
 
 ## Acknowledgements
