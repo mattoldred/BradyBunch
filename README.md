@@ -28,11 +28,11 @@ $bb = new MattOldred\BradyBunch\PrintJob( 'TestPrint', 'M6-9-423' ); // Change t
 
 $page = $bb->createPage();
 
-/* page is now an instance of GdImage which you can manipulate as needed */
+/* $page is now an instance of GdImage which you can manipulate as needed */
 
 $bb->addPage($page);
 
-$bb->print("192.168.0.135");                                       // Change to ip of your printer
+$bb->print("192.168.0.1");                                       // Change to ip of your printer
 ```
 
 
