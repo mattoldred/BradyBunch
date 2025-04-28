@@ -3,7 +3,7 @@
 
 PHP Wrapper for printing to Brady Label Printers
 
-Brady make a nice range of label printers but require you to use their Windows PC software or mobile Apps. I required a linux solution that could automatically print labels from our internal systems.  
+Brady make a nice range of label printers but require you to use their Windows PC software or mobile Apps. I required a linux solution that could automatically print labels from our internal systems. The official solution is to install the printer on a windows PC and print over the network, I wasn't happy with that solution.
 
 After reverse engineering the PRN files that the provided software generates I was able to mash together this PHP code to allow our linux server to generate custom PRN files and send them to the printer over WiFi.
 
